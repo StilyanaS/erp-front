@@ -22,7 +22,12 @@ export class DataService {
     })
   }*/
   insertData(data: Student): Observable<any>{
-    return this.httpClient.post('http://127.0.0.1:8000/newStudent', data, { withCredentials: true });
+    return this.httpClient.post('http://127.0.0.1:8000/api/new-student', {
+    "Nombre": "Nuevo nombre",
+    "Direccion": "Boira 7, bloque i, 2a",
+    "Telefono_Contacto": "642607992",
+    "Correo_Electronico": "skstoqnova@yahoo.com"
+});
   }
 
   getToken(): Observable<any> {

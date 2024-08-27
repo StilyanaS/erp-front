@@ -19,9 +19,9 @@ export class StudentFormComponent {
     this.dataservice.getToken().subscribe(res => console.log(res.csrfToken))
   }
 
-  /*insertStudent(form: NgForm) {
-    this.dataservice.getCookie().subscribe(() => {
+  insertStudent(form: NgForm) {
+
       this.dataservice.insertData(this.student).subscribe((res: Student) => console.log(''))
-    });
- }*/
+
+ }
 }
