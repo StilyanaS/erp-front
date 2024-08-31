@@ -1,4 +1,5 @@
 export class Student {
+  'id': number;
   'Nombre': string;
   'Apellido': string;
   'Fecha_Nacimiento': string;

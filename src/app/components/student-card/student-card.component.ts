@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-student-card',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './student-card.component.html',
   styleUrl: './student-card.component.css'
 })

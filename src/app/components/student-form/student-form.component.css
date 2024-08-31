@@ -1,0 +1,7 @@
+form {
+  padding: 1rem;
+}
+
+form .d-flex {
+  gap: 1rem;
+}

@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
-import { StudentsComponent } from './components/students/students.component';
-import { StudentFormComponent } from './components/student-form/student-form.component';
 
 export const routes: Routes = [
-  { path: '', component:StudentsComponent },
-  { path: 'insertStudent', component:StudentFormComponent }
+  {path:'main', loadChildren:()=> import('./main/main.module').then(m=>m.MainModule)},
+  {path:'**', loadChildren:()=> import('./main/main.module').then(m=>m.MainModule)}
 ];

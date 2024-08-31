@@ -9,29 +9,19 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
   private csrfToken: any;
   getData(): Observable<any> {
-    return this.httpClient.get('http://127.0.0.1:8000/studentsJson')
+    return this.httpClient.get('http://127.0.0.1:8000/api/studentsJson')
   }
 
-  /*insertData(data: Student) {
+  getStudent(id: string): Observable<any> {
+    return this.httpClient.get(`http://127.0.0.1:8000/api/showStudent/${id}`)
+  }
 
-    this.getToken().subscribe(dataToken => {
-      const headers = new HttpHeaders({
-        'X-CSRF-TOKEN': dataToken.csrfToken
-      })
-      return this.httpClient.post('http://127.0.0.1:8000/newStudent', data, { headers: headers, withCredentials: true })
-    })
-  }*/
   insertData(data: Student): Observable<any>{
-    return this.httpClient.post('http://127.0.0.1:8000/api/new-student', {
-    "Nombre": "Nuevo nombre",
-    "Direccion": "Boira 7, bloque i, 2a",
-    "Telefono_Contacto": "642607992",
-    "Correo_Electronico": "skstoqnova@yahoo.com"
-});
+    return this.httpClient.post('http://127.0.0.1:8000/api/new-student', data);
   }
 
   getToken(): Observable<any> {
-    return this.httpClient.get('http://127.0.0.1:8000/csrf-token')
+    return this.httpClient.get('http://127.0.0.1:8000/api/csrf-token')
       .pipe(map(response => response || 'default_token'));
   }
   initializeCsrfToken(): Observable<any> {

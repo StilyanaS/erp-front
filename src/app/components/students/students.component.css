@@ -1,0 +1,12 @@
+.students-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1 rem;
+  padding-top: 1rem;
+}
+app-student-card {
+  width: auto;
+}
+.card-body .btn-primary {
+  background-color: #eee;
+}
