@@ -21,7 +21,7 @@ export class TeacherFormComponent {
 
   insertTeacher(form: NgForm) {
 
-      this.dataservice.insertData(this.teacher).subscribe((res: Teacher) => console.log(''))
+      this.dataservice.insertTeacher(this.teacher).subscribe((res: Teacher) => console.log(''))
 
  }
 }

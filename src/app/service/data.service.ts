@@ -36,7 +36,7 @@ export class DataService {
     return this.httpClient.get(`http://127.0.0.1:8000/api/delete-teacher/${id}`)
   }
 
-  insertTeacher(data: Student): Observable<any>{
+  insertTeacher(data: Teacher): Observable<any>{
     return this.httpClient.post('http://127.0.0.1:8000/api/new-student', data);
   }
 
