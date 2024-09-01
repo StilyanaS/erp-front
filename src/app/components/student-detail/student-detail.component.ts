@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Student } from '../../models/student';
 import { DataService } from '../../service/data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-student-detail',
@@ -13,7 +14,7 @@ import { DataService } from '../../service/data.service';
 export class StudentDetailComponent implements OnInit, OnDestroy {
   student$?: Observable<Student>;
   student?: Student;
-  private subscription?: Subscription;  
+  private subscription?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +35,6 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
       next: (studentData) => {
         this.student = studentData;
         this.cdr.detectChanges();
-        console.log('Valor del estudiante:', this.student);
       },
       error: (err) => console.error('Error al recibir los datos del estudiante:', err),
       complete: () => console.log('Recepción completa de los datos del estudiante')
