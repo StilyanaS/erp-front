@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="row teachers-container">
+      @for (teacher of teachers; track $index){
+        <app-teacher-card [teacherInfo]="teacher"></app-teacher-card>
+      }
+    </div>
+  </div>

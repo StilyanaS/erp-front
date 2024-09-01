@@ -1,0 +1,12 @@
+.teachers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1 rem;
+    padding-top: 1rem;
+  }
+  app-teacher-card {
+    width: auto;
+  }
+  .card-body .btn-primary {
+    background-color: #eee;
+  }
