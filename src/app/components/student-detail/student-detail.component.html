@@ -1,1 +1,15 @@
-<p>student-detail works!</p>
+<div class="student-data__container" *ngIf="student$ | async as student; else loading">
+  <h2>Información completa del Estudiante</h2>
+  <p class="student-data">Nombre: {{ student.Nombre }}</p>
+  <p class="student-data">Apellido: {{ student.Apellido }}</p>
+  <p class="student-data">Fecha de nacimiento: {{ student.Fecha_Nacimiento }}</p>
+  <p class="student-data">Dirección: {{ student.Direccion }}</p>
+  <p class="student-data">Genero: {{ student.Genero }}</p>
+  <p class="student-data">Correo: {{ student.Correo_Electronico }}</p>
+  <p class="student-data">Fecha de ingreso: {{ student.Fecha_Ingreso }}</p>
+  <p class="student-data">Información médica: {{ student.Informacion_Medica }}</p>
+</div>
+
+<ng-template #loading>
+  <p>Cargando datos del estudiante...</p>
+</ng-template>

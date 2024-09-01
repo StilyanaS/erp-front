@@ -20,6 +20,10 @@ export class DataService {
     return this.httpClient.post('http://127.0.0.1:8000/api/new-student', data);
   }
 
+  updateData( data: Student): Observable<any>{
+    return this.httpClient.put('http://127.0.0.1:8000/api/update-student', data);
+  }
+
   getToken(): Observable<any> {
     return this.httpClient.get('http://127.0.0.1:8000/api/csrf-token')
       .pipe(map(response => response || 'default_token'));

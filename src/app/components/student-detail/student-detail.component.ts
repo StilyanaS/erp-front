@@ -1,32 +1,49 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { Student } from '../../models/student';
 import { DataService } from '../../service/data.service';
+
 @Component({
   selector: 'app-student-detail',
   standalone: false,
   templateUrl: './student-detail.component.html',
-  styleUrl: './student-detail.component.css'
+  styleUrls: ['./student-detail.component.css']
 })
-export class StudentDetailComponent {
-  student$ ?: Observable<Student[] | null >;
-  constructor(private route: ActivatedRoute,
-  private router: Router, private dataService: DataService) { }
+export class StudentDetailComponent implements OnInit, OnDestroy {
+  student$?: Observable<Student>;
+  student?: Student;
+  private subscription?: Subscription;  
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dataService: DataService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
-  /*  const studentId = this.route.snapshot.paramMap.get('id');
-    this.student$ = this.dataService.getStudent(studentId ?? '');
-     this.student$.subscribe(student => this.gotoItems(student));*/
+    const studentId = this.route.snapshot.paramMap.get('id');
+    this.getStudentInfo(studentId);
   }
 
-  gotoItems(student: Student | null) {
-     if (student) {
-      this.router.navigate(['/student-detail', student.id]);
-    } else {
-      // Handle case where student is null or undefined
-      console.error('Student not found!');
-    }
-}
+  getStudentInfo(id: string | null) {
+    this.student$ = this.dataService.getStudent(id ?? '');
 
+    this.subscription = this.student$.subscribe({
+      next: (studentData) => {
+        this.student = studentData;
+        this.cdr.detectChanges();
+        console.log('Valor del estudiante:', this.student);
+      },
+      error: (err) => console.error('Error al recibir los datos del estudiante:', err),
+      complete: () => console.log('Recepción completa de los datos del estudiante')
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }
