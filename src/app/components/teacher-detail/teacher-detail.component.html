@@ -1,1 +1,17 @@
-<p>teacher-detail works!</p>
+<div class=" teacher-data__container" *ngIf="teacher$ | async as  teacher; else loading">
+  <h2>Información completa del Estudiante</h2>
+  <p class=" teacher-data">Nombre: {{  teacher.Nombre }}</p>
+  <p class=" teacher-data">Apellido: {{  teacher.Apellido }}</p>
+  <p class=" teacher-data">Fecha de nacimiento: {{  teacher.Fecha_Nacimiento }}</p>
+  <p class=" teacher-data">Dirección: {{  teacher.Direccion }}</p>
+  <p class=" teacher-data">Genero: {{  teacher.Genero }}</p>
+  <p class=" teacher-data">Correo: {{  teacher.Correo_Electronico }}</p>
+  <p class=" teacher-data">Fecha de ingreso: {{  teacher.Fecha_Ingreso }}</p>
+  <p class=" teacher-data">Información médica: {{  teacher.Informacion_Medica }}</p>
+
+  <button class="btn btn-grey mt-1" (click)="delete teacher()">Borrar estudiante</button>
+</div>
+  <p class=" teacher-data__message hidden">El estudiante se ha borrado con éxito</p>
+<ng-template #loading>
+  <p>Cargando datos del estudiante...</p>
+</ng-template>

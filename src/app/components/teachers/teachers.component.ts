@@ -27,7 +27,7 @@ export class TeachersComponent implements OnInit{
   );
 }
   getDataService() {
-    this.dataService.getData().subscribe(res => {
+    this.dataService.getTeacherData().subscribe(res => {
       this.teachers = res;
       console.log(this.teachers)
     },(error) => {

@@ -1,9 +1,8 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Student } from '../../models/student';
 import { DataService } from '../../service/data.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-student-detail',
@@ -15,12 +14,12 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
   student$?: Observable<Student>;
   student?: Student;
   private subscription?: Subscription;
-
+  isActive = false;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private dataService: DataService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit() {
@@ -39,6 +38,27 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
       error: (err) => console.error('Error al recibir los datos del estudiante:', err),
       complete: () => console.log('Recepción completa de los datos del estudiante')
     });
+  }
+
+  deleteStudent() {
+    console.log('delete');
+    if (this.student) {
+      console.log(this.student.id);
+      this.dataService.deleteStudent(this.student.id).subscribe({
+        next: (res) => console.log(''),
+        complete: () => {
+          this.hideInfo();
+        }
+      });
+
+    }
+  }
+
+  hideInfo() {
+    const container = document.querySelector('.student-data__container');
+    const message = document.querySelector('.student-data__message');
+    this.renderer.addClass(container, 'hidden');
+    this.renderer.removeClass(message, 'hidden');
   }
 
   ngOnDestroy(): void {

@@ -8,8 +8,10 @@
   <p class="student-data">Correo: {{ student.Correo_Electronico }}</p>
   <p class="student-data">Fecha de ingreso: {{ student.Fecha_Ingreso }}</p>
   <p class="student-data">Información médica: {{ student.Informacion_Medica }}</p>
-</div>
 
+  <button class="btn btn-grey mt-1" (click)="deleteStudent()">Borrar estudiante</button>
+</div>
+  <p class="student-data__message hidden">El estudiante se ha borrado con éxito</p>
 <ng-template #loading>
   <p>Cargando datos del estudiante...</p>
 </ng-template>

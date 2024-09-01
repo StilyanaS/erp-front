@@ -1,0 +1,9 @@
+.teacher-data__container {
+  background-color: #eee;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+.teacher-data {
+  margin: 1rem auto;
+}

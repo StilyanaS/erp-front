@@ -1,0 +1,54 @@
+<div class="container" *ngIf="teacher; else loading">
+    <form (ngSubmit)="updateTeacher(myForm)" #myForm="ngForm">
+        <div class="form-row d-flex">
+              <div class="form-group col-md-3">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" id="name" placeholder="Nombre" name="Nombre" [(ngModel)]="teacher.Nombre">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="Correo_Electronico" [(ngModel)]="teacher.Correo_Electronico">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="surname">Apellido</label>
+                <input type="apellido" class="form-control" id="surname" placeholder="Apellido" name="Apellido" [(ngModel)]="teacher.Apellido">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Direccion</label>
+            <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="Direccion" [(ngModel)]="teacher.Direccion">
+        </div>
+        <div class="form-group">
+            <label for="phone">Teléfono de contacto</label>
+            <input type="text" class="form-control" id="phone" placeholder="Número" [(ngModel)]="teacher.Telefono_Contacto" name="Telefono_Contacto">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="gender">Genero</label>
+                <input type="text" class="form-control" id="gender" name="Genero" [(ngModel)]="teacher.Genero">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="role">Rol</label>
+                <textarea class="form-control" id="role" name="Rol" [(ngModel)]="teacher.Informacion_Medica">
+                </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="date col-md-6">
+                <label class="form-label" for="birth-date"> Fecha nacimiento:
+                    <input class="form-input" type="date" id="birth-date" name="Fecha_Nacimiento" [(ngModel)]="teacher.Fecha_Nacimiento">
+                </label>
+            </div>
+            <div class="date col-md-6">
+                <label class="form-label" for="ini-date"> Fecha de Inicio:
+                    <input class="form-input" type="date" id="ini-date" name="Fecha_Inicio" [(ngModel)]="teacher.Fecha_Inicio">
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    </div>
+
+    <ng-template #loading>
+      <p>Cargando datos del docente...</p>
+    </ng-template>

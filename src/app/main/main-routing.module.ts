@@ -4,9 +4,11 @@ import { StudentFormComponent } from '../components/student-form/student-form.co
 import { StudentDetailComponent } from '../components/student-detail/student-detail.component';
 import { StudentsComponent } from '../components/students/students.component';
 import { StudentUpdateComponent } from '../components/student-update/student-update.component';
+import { TeachersComponent } from '../components/teachers/teachers.component';
 
 const routes: Routes = [
   { path: 'insertStudent', component: StudentFormComponent },
+  { path: 'teachers', component: TeachersComponent },
   { path: 'updateStudent/:id', component: StudentUpdateComponent },
   { path: 'student-info/:id', component: StudentDetailComponent },
   { path: '**', component:StudentsComponent }
